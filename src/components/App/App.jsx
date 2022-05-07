@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import LineChart from "../../shared/LineChart";
 import AppContainer from "../AppContainer/AppContainer";
 import AppHeader from "../AppHeader";
@@ -9,7 +9,6 @@ import Calculator from "../Calculator";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectAllProducts,
   selectSelectedProducts,
   selectSelectedProductsTotalPrice,
 } from "../../store/Products/Products.selectors";
@@ -19,7 +18,6 @@ function App() {
   const dispatch = useDispatch();
   const colors = ["#62CBC6", "#00ABAD", "#00858C", "#006073", "#004D61"];
 
-  const products = useSelector(selectAllProducts);
   const selectedProducts = useSelector(selectSelectedProducts);
 
   const totalPrice = useSelector(selectSelectedProductsTotalPrice);
@@ -36,14 +34,13 @@ function App() {
           left={
             <ShoppingList
               title="Produtos disponíveis"
-              products={products}
               onToggle={handleToggle}
             />
           }
           middle={
             <ShoppingList
               title="Sua lista de compras"
-              products={selectedProducts}
+              displayOnlySelected
               onToggle={handleToggle}
             />
           }
