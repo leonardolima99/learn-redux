@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(
   {
-    key: "root",
+    key: "redux1",
     storage,
   },
   rootReducer
