@@ -1,20 +1,20 @@
-import { createStore, combineReducers } from "redux";
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { configureStore } from "@reduxjs/toolkit";
+/* import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage"; */
 
-import counterReducer from "./Counter/reducer";
+import counterReducer from "./Counter.store";
 
-const rootReducer = combineReducers({
-  counter: counterReducer,
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
 });
 
-const persistedReducer = persistReducer(
+/* const persistedReducer = persistReducer(
   {
     key: "redux3",
     storage,
   },
   rootReducer
-);
-
-export const store = createStore(persistedReducer);
-export const persistedStore = persistStore(store);
+); */
+/* export const persistedStore = persistStore(store); */
