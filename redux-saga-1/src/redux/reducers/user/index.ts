@@ -51,6 +51,6 @@ export const userReducer = (
       };
 
     default:
-      break;
+      return state;
   }
 };
