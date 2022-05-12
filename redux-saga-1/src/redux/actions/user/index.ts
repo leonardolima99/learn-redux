@@ -1,4 +1,4 @@
-import { ActionType, ErrorType, UserType } from "..";
+import { ActionType, ErrorType, UserType } from "../../../types";
 import * as types from "../../types";
 
 export function getUserRequest(name: string): ActionType<string> {

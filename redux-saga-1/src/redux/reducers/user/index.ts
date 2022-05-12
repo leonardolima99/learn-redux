@@ -1,4 +1,4 @@
-import { ActionType, ErrorType, UserType } from "../../actions";
+import { ActionType, ErrorType, UserType } from "../../../types";
 import * as types from "../../types";
 
 interface UserState {
