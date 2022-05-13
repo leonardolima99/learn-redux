@@ -1,5 +1,5 @@
 import { call, put, all, takeLatest } from "redux-saga/effects";
-import { UserType } from "../../../types";
+import { ErrorType, UserType } from "../../../types";
 import { getUserFailure, getUserSuccess } from "../../actions";
 import * as types from "../../types";
 
@@ -8,9 +8,10 @@ const userRequest = async (name: string) => {
   try {
     const request = await fetch(`https://api.github.com/users/${name}`);
     userApi = await request.json();
-    return true;
+
+    if (!request.ok) throw userApi;
   } catch (e) {
-    return false;
+    throw e;
   }
 };
 
@@ -19,7 +20,8 @@ export function* userData(action: { type: string; payload: string }) {
     yield call(userRequest, action.payload);
     yield put(getUserSuccess(userApi));
   } catch (e) {
-    yield put(getUserFailure({ message: "Falha ao requisitar." }));
+    const err = e as ErrorType;
+    yield put(getUserFailure(err));
   }
 }
 

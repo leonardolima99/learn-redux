@@ -10,5 +10,5 @@ export type UserType = {
 };
 
 export type ErrorType = {
-  message: string;
+  message?: string;
 };
